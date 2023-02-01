@@ -8,13 +8,15 @@ function listen(io) {
     // tracking.emit('point', 'point: 7687678');
     apiServer.use(bodyParser.json({ extended: false }));
     apiServer.post('/update', (req, res) => {
-      const lat = req.body.lat;
-      const lng = req.body.lng;
+      console.log(req.body);
+      // const lat = req.body.lat;
+      // const lng = req.body.lng;
       // update DB
 
       tracking.emit('updateLocation', {
-        lat,
-        lng,
+        data: req.body,
+        // lat,
+        // lng,
       });
 
       res.json({ message: 'done' });
